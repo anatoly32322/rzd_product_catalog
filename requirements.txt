@@ -1,1 +1,5 @@
-streamlit
+streamlit~=1.39.0
+streamlit-markmap
+requests~=2.32.3
+numpy~=2.0.2
+pandas~=2.2.3

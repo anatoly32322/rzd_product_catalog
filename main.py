@@ -1,7 +1,15 @@
 import streamlit as st
+import handlers
 
-type_of_transaction = st.selectbox("Выберете вид сделки", ["Закупка товаров, работ, услуг", "Продажа/аренда недвижимости", "Продажа"])
-st.write(f"Selected Option: {type_of_transaction!r}")
+st.set_page_config(page_title="markmap", layout="wide")
 
-keywords = st.text_input("Ключевые слова")
-st.write(keywords)
+category_tree, okpd_to_rzd, specifications = st.tabs(["Дерево категорий", "ОКПД -> РЖД", "Выделение характеристик"])
+
+with category_tree:
+    handlers.tree_present.handle()
+
+with okpd_to_rzd:
+    handlers.okpd_present.handle()
+
+with specifications:
+    handlers.specifications_present.handle()
