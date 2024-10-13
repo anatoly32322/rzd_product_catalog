@@ -13,6 +13,7 @@ def csv_reader():
     """
     with open("data/okpd2_best_matches.csv", "r") as csv_in:
         df = pd.read_csv(csv_in)
+    df = df.sort_values("cosine_similarity", ascending=False)
     categories_cols = [
         'level_1_category',
         'level_2_category',
@@ -24,7 +25,6 @@ def csv_reader():
     ]
     df['NEW_CATEGORY'] = df[categories_cols].apply(lambda row: ' > '.join(row.dropna()), axis=1)
     final_df = df[['OKPD2', 'OKPD2_NAME', 'NEW_CATEGORY']]
-
     return final_df.set_index("OKPD2")
 
 
