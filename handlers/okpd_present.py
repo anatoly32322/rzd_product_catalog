@@ -36,3 +36,5 @@ def handle():
     okpd = st.text_input("ОКПД")
     if okpd in df.index:
         st.write(df.loc[[okpd]])
+    else:
+        st.write(df)
