@@ -3,6 +3,7 @@
 import requests
 import json
 
+
 # Функция для получения токена доступа
 def get_access_token(credentials):
     url = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth"
@@ -19,6 +20,7 @@ def get_access_token(credentials):
     
     response = requests.post(url, headers=headers, data=payload, verify=False)
     return response.json()['access_token']
+
 
 # Функция для запроса GigaChat с определёнными атрибутами
 def gigachat_generate_category(access_token, title: str, description: str, client_id: str):
@@ -50,6 +52,7 @@ def gigachat_generate_category(access_token, title: str, description: str, clien
 
     response = requests.post(url, headers=headers, data=payload, verify=False)
     return json.loads(response.json()['choices'][0]['message']['content'])
+
 
 if __name__ == "__main__":
     # Задайте свои данные

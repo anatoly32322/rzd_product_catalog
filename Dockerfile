@@ -1,5 +1,11 @@
 FROM python:3.9-slim
 
+ARG iam_token
+ARG folder_id
+
+ENV IAM_TOKEN=$iam_token
+ENV FOLDER_ID=$folder_id
+
 WORKDIR /app
 
 COPY . /app

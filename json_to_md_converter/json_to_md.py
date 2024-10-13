@@ -4,6 +4,14 @@ import sys
 
 
 def dfs(node: any, depth: int, fout):
+    """
+    Реализуется стандартный алгоритм DFS. Мы идем вглубь дерева и на каждом шаге преобразуем данные, лежащие в json, в
+    .md формат.
+    Алгоритм преобразования следующий: ставим количество `#` равное глубине текущей ноды.
+    :param node: Текущая нода
+    :param depth: Глубина графа на текущей ноде
+    :param fout: Файловый дескриптор
+    """
     if not isinstance(node, dict) and not isinstance(node, list):
         fout.write(f"{'#' * depth} {node}\n")
         return

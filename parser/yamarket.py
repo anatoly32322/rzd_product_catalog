@@ -1,4 +1,3 @@
-import codecs
 import json
 import os
 import sys
@@ -11,7 +10,6 @@ logging.basicConfig(level=logging.INFO)
 counter = 50  # Yandex Market API имеет ограничение на 50 запросов в минуту
 headers = {"Authorization": f"Bearer {os.getenv('OAUTH_TOKEN')}"}
 formatted_url = "https://api.partner.market.yandex.ru/category/{}/parameters"
-fout = codecs.open("output.json", "w+", "utf-8")
 results = []
 
 
@@ -38,9 +36,9 @@ def run(args: list):
         return
     with open(filepath, "r") as fin:
         dfs(json.loads(fin.read())["result"])
-    fout.write(json.dumps(results, indent=4, ensure_ascii=False).encode('utf8').decode())
+    with open("output.json", "w+", encoding="utf-8") as fout:
+        fout.write(json.dumps(results, indent=4, ensure_ascii=False).encode('utf8').decode())
 
 
 if __name__ == "__main__":
     run(sys.argv)
-fout.close()
